@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-    var form = $("form");
     var resultsElmt = $(".results");
 
-    form.on("submit", handleSubmission);
+    $("form").on("submit", handleSubmission);
+    $("#reset").on("click", clearResults);
 
     function handleSubmission(event) {
 
@@ -24,50 +24,36 @@ $(document).ready(function(){
         })
         .then(function(response){
 
-            console.log(response);
+            clearResults();
             
             if (!response.totalArticles || !response.articles.length) {
                 resultsElmt.html("<h2>The query returned no results.</h2>");
             } else {
                 var articles = response.articles;
                 var numArticles = articles.length;
-                var articleElmt = $("<div>").addClass("article");
 
                 for (var i = 0; i < numArticles; i++) {
                     
+                    var articleElmt = $("<div>").addClass("article").addClass("mt-5");
+                    var articleLink = articles[i].url.trim();
                     var descriptionText = articles[i].description.trim();
-                    var image = $("<img>").addClass("article-image").attr({"src": articles[i].image.trim(), "alt": descriptionText}).css("width", "500px");
+                    var image = $("<img>").addClass("article-image mb-4").attr({"src": articles[i].image.trim(), "alt": descriptionText}).css("width", "500px");
                     var titleEl = $("<h2>").addClass("article-title").text(articles[i].title.trim());
-                    var titleLink = $("<a>").addClass("article-title-link").attr("href", articles[i].url.trim()).html(titleEl);
-                    var sourceLink = $("<a>").addClass("article-source-link").attr("href", articles[i].source.url.trim()).text(articles[i].source.name.trim());
+                    var imageLink = $("<a>").addClass("article-image-link").attr("href", articleLink).append(image);
+                    var sourceLink = $("<a>").addClass("article-source-link").attr("href", articleLink).text(articles[i].source.name.trim());
                     var publishedDate = $("<span>").addClass("article-date").text(", " + moment(articles[i].publishedAt.trim()).format("MMMM Do YYYY"));
                     var source = $("<p>").addClass("article-source").append(sourceLink, publishedDate);
                     var description = $("<p>").addClass("article-description").text(descriptionText);
 
-                    articleElmt.append(image, titleLink, source, description);
+                    articleElmt.append(imageLink, titleEl, source, description);
                     resultsElmt.append(articleElmt);
                 }
             }
-            /*
-            [
-                totalArticles: 117445,
-                articles: [
-                    {
-                        content: "String",
-                        description: "String",
-                        image: "String",
-                        publishedAt: "2022-12-16T08:01:25Z",
-                        source: {
-                            name: "String",
-                            url: "String"
-                        },
-                        title: "String",
-                        url: "String"
-                    }
-                ]
-            ]
-            */
-        })
+        });
 
+    }
+
+    function clearResults() {
+        resultsElmt.empty();
     }
 });
