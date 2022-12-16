@@ -7,11 +7,11 @@ $(document).ready(function(){
     function handleSubmission(event) {
 
         event.preventDefault();
-
-        var subject = "World Cup";
-        var max = 5;
-        var from = 1998;
-        var to = 2022;
+        
+        var subject = $(this).searchTerm;
+        var max = $(this).recordNumber;
+        var from = $(this).startYear;
+        var to = $(this).endYear;
 
         $.ajax({
             url: "https://gnews.io/api/v4/search?q=" + subject + "&max=" + max + "&from=" + from + "&to=" + to + "&token=ce3e8f3a40eede2769eff477cd8dace5",
