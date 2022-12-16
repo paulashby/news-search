@@ -1,0 +1,21 @@
+.header {
+    background-color: rgb(33, 50, 90);
+    color: white;
+    height: 200px;
+    padding-top: 70px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.top-spaced {
+    margin-top: 50px;
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    border: 1px solid #ced4da;
+}
+
