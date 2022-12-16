@@ -19,7 +19,7 @@
     </div>
 
     <div class="container-fluid top-spaced">
-        <form class="card" style="width: ">
+        <form class="card">
             <div class="card-header">
                 <strong>Search Parameters</strong>
             </div>
@@ -58,8 +58,11 @@
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </ul>
-            <button type="submit" class="btn btn-primary">Search</button>
-            <button id="reset" type="reset" class="btn btn-primary">Clear Results</button>
+            <div id="form-buttons">
+                <button id="submit" type="submit">Search</button>
+                <button id="reset" type="reset">Clear Results</button>
+            </div>
+            
         </form>
         <div class="card" style="width: ">
             <div class="card-header">
@@ -68,7 +71,7 @@
             <div class="container-fluid">
                 <div class="results">
                 </div>
-                <p class="text-center">Made with lots and lots of </p>
+                <p class="text-center">Made with lots and lots of things</p>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
