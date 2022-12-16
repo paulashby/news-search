@@ -19,3 +19,39 @@
     border: 1px solid #ced4da;
 }
 
+#form-buttons {
+    display: flex;
+    height: 4rem;
+}
+
+#submit, #reset, .card-header strong {
+    font-weight: bold;
+    border: 0;
+    width: 7rem;
+    background-color: transparent;
+    background-image: url("./images/search.svg");
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: 1rem;
+    text-align: left;
+    padding-left: 2.25rem;
+}
+
+#reset {
+    background-image: url("./images/trash-fill.svg");
+    padding-left: 2.15rem;
+    width: 10rem;
+}
+
+.card-header strong {
+    background-image: url("./images/table.svg");
+    padding-left: 2.25rem;
+    width: 10rem;
+}
+
+.card:first-child .card-header strong {
+    background-image: url("./images/card-list.svg");
+    background-size: 1.15rem;
+    padding-left: 2.5rem;
+    width: 10rem;
+}
