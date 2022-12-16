@@ -9,12 +9,10 @@ $(document).ready(function(){
 
         event.preventDefault();
 
-        // Validate input
-        
-        var subject = $("#searchTerm").val();
-        var max = $("#recordNumber").val();
-        var from = $("#startYear").val() + "-01-01T00:00:00Z";
-        var to = $("#endYear").val() + "-12-31T11:59:59Z";
+        var subject = $("input[id='searchTerm']").val();
+        var max = $("input[id='recordNumber']").val();
+        var from = $("input[id='startYear']").val() + "-01-01T00:00:00Z";
+        var to = $("input[id='endYear']").val() + "-12-31T11:59:59Z";
         var queryURL = "https://gnews.io/api/v4/search?q=" + subject + "&max=" + max + "&from=" + from + "&to=" + to + "&lang=en&token=ce3e8f3a40eede2769eff477cd8dace5";
 
         $.ajax({
